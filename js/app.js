@@ -71,7 +71,7 @@
     { name: 'Video Shoot', price: 9999, unit: '/project', badge: 'Trending', img: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=85' },
     { name: 'Product Shoot', price: 6999, unit: '/product', badge: 'Premium', img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=85' },
     { name: 'Podcast Studio', price: 2499, unit: '/hour', badge: 'New', img: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&q=85' },
-    { name: 'Monthly Package', price: 24999, unit: '/month', badge: 'Best Value', img: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&q=85' },
+    { name: 'Monthly Package', price: 24999, unit: '/month', badge: 'Best Value', img: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&q=85' },
   ];
 
   let currentBooking = {
