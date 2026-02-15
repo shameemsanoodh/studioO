@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio O Production</title>
+  <meta name="description" content="Studio O Production — Premium creative studio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- ═══ LANDING PAGE ═══ -->
+  <div class="landing" id="landing">
+    <div class="bg-reveal" id="bgReveal">
+      <img src="download.jpg" alt="" id="bgImage">
+    </div>
+    <div class="spotlight-mask" id="spotlightMask"></div>
+    <main class="page">
+      <div class="center-block">
+        <h1 class="title">
+          <span class="title-word">STUDIO</span>
+          <span class="title-o" id="titleO">
+            <span class="o-letter">O</span>
+            <span class="o-ring" id="oRing"></span>
+          </span>
+          <span class="title-word">PRODUCTION</span>
+        </h1>
+        <p class="subtitle">Premium Creative Studio</p>
+        <div class="btn-group">
+          <button class="btn" data-action="member"><span class="btn-text">Member</span></button>
+          <button class="btn btn--accent" data-action="signup"><span class="btn-text">Sign Up</span></button>
+          <button class="btn" data-action="guest"><span class="btn-text">Guest</span></button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ═══ AUTH SCREEN ═══ -->
+  <div class="auth-screen" id="authScreen">
+    <button class="auth-back" id="authBack">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+      Back
+    </button>
+
+    <div class="auth-layout">
+
+      <!-- ═══ LEFT: Form ═══ -->
+      <div class="auth-left">
+        <div class="auth-form-wrap">
+
+          <!-- Logo mark -->
+          <div class="auth-logo">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="20" cy="20" r="14" />
+              <circle cx="20" cy="20" r="6" />
+              <line x1="20" y1="2" x2="20" y2="8" />
+              <line x1="20" y1="32" x2="20" y2="38" />
+            </svg>
+          </div>
+
+          <!-- Badge -->
+          <div class="auth-badge" id="authBadge">Join Studio O</div>
+
+          <!-- Header -->
+          <h2 class="auth-title" id="authTitle">Sign up account</h2>
+          <p class="auth-desc" id="authDesc">Choose how you'd like to join us</p>
+
+          <!-- Role Tabs (only on signup) -->
+          <div class="role-tabs" id="roleTabs">
+            <button class="role-tab active" data-role="partner">Join as Partner</button>
+            <button class="role-tab" data-role="employee">Employee</button>
+            <button class="role-tab" data-role="business">Partner with Us</button>
+          </div>
+
+          <!-- Social (Google only) -->
+          <div class="social-row" id="socialRow">
+            <button class="social-btn social-btn--wide">
+              <svg viewBox="0 0 24 24" width="18" height="18">
+                <path
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"
+                  fill="#4285f4" />
+                <path
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A10.997 10.997 0 0012 23z"
+                  fill="#34a853" />
+                <path
+                  d="M5.84 14.09A6.61 6.61 0 015.5 12c0-.72.12-1.42.35-2.09V7.07H2.18A10.96 10.96 0 001 12c0 1.77.43 3.45 1.18 4.93l2.66-2.84z"
+                  fill="#fbbc05" />
+                <path
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                  fill="#ea4335" />
+              </svg>
+              <span>Continue with Google</span>
+            </button>
+          </div>
+
+          <!-- Divider -->
+          <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-text">or</span>
+            <span class="divider-line"></span>
+          </div>
+
+          <!-- Form -->
+          <form class="auth-form" id="authForm" onsubmit="return false;">
+
+            <!-- Partner fields: Name, Email, Password -->
+            <div class="form-group field-partner field-employee" id="fieldName">
+              <label class="form-label">Name</label>
+              <input class="form-input" type="text" placeholder="Your full name" autocomplete="name">
+            </div>
+
+            <!-- Employee field: Employee ID -->
+            <div class="form-group field-employee hidden-field" id="fieldEmpId">
+              <label class="form-label">Employee ID</label>
+              <input class="form-input" type="text" placeholder="Enter your employee ID">
+            </div>
+
+            <!-- Business field: Company Name -->
+            <div class="form-group field-business hidden-field" id="fieldCompany">
+              <label class="form-label">Company Name</label>
+              <input class="form-input" type="text" placeholder="Your company name">
+            </div>
+
+            <!-- Business field: Contact Person -->
+            <div class="form-group field-business hidden-field" id="fieldContact">
+              <label class="form-label">Contact Person</label>
+              <input class="form-input" type="text" placeholder="Contact person name">
+            </div>
+
+            <!-- Email (all roles) -->
+            <div class="form-group" id="fieldEmail">
+              <label class="form-label" id="emailLabel">Email address</label>
+              <input class="form-input" type="email" placeholder="Email address" autocomplete="email">
+            </div>
+
+            <!-- Password (all signup roles) -->
+            <div class="form-group" id="fieldPassword">
+              <label class="form-label">Password</label>
+              <div class="input-wrap">
+                <input class="form-input" type="password" placeholder="Enter your password" autocomplete="new-password">
+                <button class="input-toggle" type="button" aria-label="Toggle password">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94" />
+                    <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19" />
+                    <line x1="1" y1="1" x2="23" y2="23" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <button class="form-submit" type="submit">
+              <span id="submitText">Sign up</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </button>
+          </form>
+
+          <p class="auth-switch" id="authSwitch">
+            Already have an account? <a href="#" id="switchLink">Log in</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- ═══ RIGHT: Bento Grid ═══ -->
+      <div class="auth-right">
+        <div class="bento-grid">
+
+          <!-- Row 1: video + image + wide image -->
+          <div class="bento-tile bento-img" style="grid-column:1; grid-row:1;">
+            <video autoplay muted loop playsinline>
+              <source src="https://videos.pexels.com/video-files/3209828/3209828-uhd_1440_2560_25fps.mp4"
+                type="video/mp4">
+            </video>
+          </div>
+          <div class="bento-tile bento-img" style="grid-column:2; grid-row:1;">
+            <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=400&q=85" alt="Drone aerial">
+          </div>
+          <div class="bento-tile bento-img bento-wide" style="grid-column:3/5; grid-row:1;">
+            <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&q=85"
+              alt="Studio editing setup">
+          </div>
+
+          <!-- Row 2: tall video + card + card -->
+          <div class="bento-tile bento-img bento-tall" style="grid-column:1/3; grid-row:2/4;">
+            <video autoplay muted loop playsinline>
+              <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_1440_2560_25fps.mp4"
+                type="video/mp4">
+            </video>
+          </div>
+
+          <div class="bento-tile bento-card card-green" style="grid-column:3; grid-row:2;">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <h3 class="card-title">Photo Shoot</h3>
+            <p class="card-desc">Professional portraits, events & creative photography.</p>
+          </div>
+
+          <div class="bento-tile bento-card card-yellow" style="grid-column:4; grid-row:2;">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polygon points="23 7 16 12 23 17 23 7" />
+                <rect x="1" y="5" width="15" height="14" rx="2" />
+              </svg>
+            </div>
+            <h3 class="card-title">Video Shoot</h3>
+            <p class="card-desc">Cinematic videography for brands & films.</p>
+          </div>
+
+          <!-- Row 3: card + card -->
+          <div class="bento-tile bento-card card-lime" style="grid-column:3; grid-row:3;">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="7" width="20" height="14" rx="2" />
+                <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
+              </svg>
+            </div>
+            <h3 class="card-title">Product Shoot</h3>
+            <p class="card-desc">High-end product photography for e-commerce.</p>
+          </div>
+
+          <div class="bento-tile bento-card card-cyan" style="grid-column:4; grid-row:3;">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </svg>
+            </div>
+            <h3 class="card-title">Drone Shoot</h3>
+            <p class="card-desc">Aerial cinematography for events & real estate.</p>
+          </div>
+
+          <!-- Row 4: podcast card + camera image + studio video -->
+          <div class="bento-tile bento-card card-dark" style="grid-column:1/3; grid-row:4;">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z" />
+                <path d="M19 10v2a7 7 0 01-14 0v-2" />
+                <line x1="12" y1="19" x2="12" y2="23" />
+              </svg>
+            </div>
+            <h3 class="card-title">Podcast Studio</h3>
+            <p class="card-desc">Professional recording for podcasts & interviews.</p>
+          </div>
+
+          <div class="bento-tile bento-img" style="grid-column:3; grid-row:4;">
+            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&q=85" alt="Cinema camera lens">
+          </div>
+
+          <div class="bento-tile bento-img" style="grid-column:4; grid-row:4;">
+            <video autoplay muted loop playsinline>
+              <source src="https://videos.pexels.com/video-files/3191950/3191950-uhd_1440_2560_25fps.mp4"
+                type="video/mp4">
+            </video>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Expand icon -->
+      <button class="bento-expand" aria-label="Expand">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 3 21 3 21 9" />
+          <polyline points="9 21 3 21 3 15" />
+          <line x1="21" y1="3" x2="14" y2="10" />
+          <line x1="3" y1="21" x2="10" y2="14" />
+        </svg>
+      </button>
+    </div>
+
+  </div>
+  </div>
+
+  <!-- ═══ GUEST CAROUSEL ═══ -->
+  <div class="guest-screen" id="guestScreen">
+    <button class="auth-back" id="guestBack">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+      Back
+    </button>
+
+    <div class="carousel-header">
+      <span class="carousel-label">@studioo</span>
+      <span class="carousel-swipe">Swipe <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
+          stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6" />
+        </svg></span>
+    </div>
+
+    <div class="carousel-scene" id="carouselScene">
+      <div class="carousel-track" id="carouselTrack">
+
+        <!-- Card 1: Photoshoot -->
+        <div class="carousel-card" data-index="0">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&q=85" alt="Photoshoot">
+            <div class="card-badge">Popular</div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Photoshoot</h3>
+            <p class="card-text">Professional portraits, event coverage & creative photography. Geometric precision
+              meets artistic vision in every frame.</p>
+            <div class="card-price">
+              <span class="price-from">From</span>
+              <span class="price-amount">₹4,999</span>
+              <span class="price-unit">/session</span>
+            </div>
+            <button class="card-book">Book Now</button>
+          </div>
+        </div>
+
+        <!-- Card 2: Video Shoot -->
+        <div class="carousel-card" data-index="1">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=85" alt="Video Shoot">
+            <div class="card-badge">Trending</div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Video Shoot</h3>
+            <p class="card-text">Cinematic videography for brands & films. Dynamic polygon-inspired motion with seamless
+              transitions and vibrant color grading.</p>
+            <div class="card-price">
+              <span class="price-from">From</span>
+              <span class="price-amount">₹9,999</span>
+              <span class="price-unit">/project</span>
+            </div>
+            <button class="card-book">Book Now</button>
+          </div>
+        </div>
+
+        <!-- Card 3: Product Shoot -->
+        <div class="carousel-card" data-index="2">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=85" alt="Product Shoot">
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Product Shoot</h3>
+            <p class="card-text">High-end product photography for e-commerce & branding. Low-poly precision lighting
+              showcases depth, texture & form.</p>
+            <div class="card-price">
+              <span class="price-from">From</span>
+              <span class="price-amount">₹6,999</span>
+              <span class="price-unit">/product</span>
+            </div>
+            <button class="card-book">Book Now</button>
+          </div>
+        </div>
+
+        <!-- Card 4: Podcast -->
+        <div class="carousel-card" data-index="3">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&q=85" alt="Podcast Studio">
+            <div class="card-badge card-badge--green">New</div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Podcast Studio</h3>
+            <p class="card-text">Professional recording studio for podcasts, interviews & live sessions. Immersive sound
+              meets modern geometric aesthetics.</p>
+            <div class="card-price">
+              <span class="price-from">From</span>
+              <span class="price-amount">₹2,499</span>
+              <span class="price-unit">/hour</span>
+            </div>
+            <button class="card-book">Book Now</button>
+          </div>
+        </div>
+
+        <!-- Card 5: Monthly Package -->
+        <div class="carousel-card" data-index="4">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&q=85" alt="Monthly Package">
+            <div class="card-badge card-badge--gold">Best Value</div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Monthly Package</h3>
+            <p class="card-text">All-inclusive creative bundle. From branding to product visualization — limitless 3D
+              polygon possibilities with fluid motion & vibrant colors.</p>
+            <div class="card-price">
+              <span class="price-from">From</span>
+              <span class="price-amount">₹24,999</span>
+              <span class="price-unit">/month</span>
+            </div>
+            <button class="card-book card-book--gold">Book Package</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="carousel-footer">
+      <div class="carousel-dots" id="carouselDots">
+        <span class="cdot active" data-i="0"></span>
+        <span class="cdot" data-i="1"></span>
+        <span class="cdot" data-i="2"></span>
+        <span class="cdot" data-i="3"></span>
+        <span class="cdot" data-i="4"></span>
+      </div>
+      <button class="carousel-save">Save for Later ★</button>
+    </div>
+  </div>
+
+  <!-- ═══ BOOKING PAGE (Fullscreen scrollable) ═══ -->
+  <div class="booking-screen" id="bookingScreen">
+
+    <!-- Ambient lighting overlay -->
+    <div class="booking-ambient" id="bookingAmbient"></div>
+
+    <button class="auth-back" id="bookingBack">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+      Back
+    </button>
+
+    <div class="booking-scroll">
+
+      <!-- Hero -->
+      <div class="booking-hero" id="bookingHero">
+        <img src="" alt="" id="bookingHeroImg">
+        <div class="booking-hero-overlay"></div>
+        <div class="booking-hero-info">
+          <span class="booking-hero-badge" id="bookingHeroBadge">Event</span>
+          <h2 class="booking-hero-title" id="bookingHeroTitle">Photoshoot</h2>
+          <p class="booking-hero-price" id="bookingHeroPrice">From ₹4,999</p>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="booking-form">
+
+        <!-- Event Name -->
+        <div class="bfield">
+          <label class="bfield-label">Event Name</label>
+          <input class="bfield-input" type="text" id="bEventName" placeholder="e.g. Birthday Shoot, Corporate Video…">
+        </div>
+
+        <!-- Calendar -->
+        <div class="bfield">
+          <label class="bfield-label">Select Date(s)</label>
+          <p class="bfield-hint">Tap dates to select single or multiple days</p>
+          <div class="calendar" id="bookingCalendar">
+            <div class="cal-header">
+              <button class="cal-nav" id="calPrev">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+              <span class="cal-month" id="calMonth">February 2026</span>
+              <button class="cal-nav" id="calNext">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 6 15 12 9 18" />
+                </svg>
+              </button>
+            </div>
+            <div class="cal-weekdays">
+              <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+            </div>
+            <div class="cal-grid" id="calGrid"></div>
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div class="bfield">
+          <label class="bfield-label">Event Location</label>
+          <input class="bfield-input" type="text" id="bLocation" placeholder="Studio / Outdoor / Your Venue">
+        </div>
+
+        <!-- Duration & Members row -->
+        <div class="bfield-row">
+          <div class="bfield">
+            <label class="bfield-label">Duration</label>
+            <div class="bfield-stepper">
+              <button class="stepper-btn" data-target="bDuration" data-dir="-1">−</button>
+              <span class="stepper-val" id="bDuration">1</span>
+              <span class="stepper-unit">hrs</span>
+              <button class="stepper-btn" data-target="bDuration" data-dir="1">+</button>
+            </div>
+          </div>
+          <div class="bfield">
+            <label class="bfield-label">Members</label>
+            <div class="bfield-stepper">
+              <button class="stepper-btn" data-target="bMembers" data-dir="-1">−</button>
+              <span class="stepper-val" id="bMembers">1</span>
+              <span class="stepper-unit">pax</span>
+              <button class="stepper-btn" data-target="bMembers" data-dir="1">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Time Slot -->
+        <div class="bfield">
+          <label class="bfield-label">Preferred Time Slot</label>
+          <div class="time-slots" id="timeSlots">
+            <button class="time-card active" data-time="morning" data-ambient="morning">
+              <div class="time-icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="30" r="10" fill="#FF9D42" opacity=".8" />
+                  <line x1="24" y1="16" x2="24" y2="12" stroke="#FFB74D" stroke-width="2" stroke-linecap="round" />
+                  <line x1="14" y1="22" x2="11" y2="19" stroke="#FFB74D" stroke-width="2" stroke-linecap="round" />
+                  <line x1="34" y1="22" x2="37" y2="19" stroke="#FFB74D" stroke-width="2" stroke-linecap="round" />
+                  <line x1="10" y1="30" x2="6" y2="30" stroke="#FFB74D" stroke-width="2" stroke-linecap="round" />
+                  <line x1="42" y1="30" x2="38" y2="30" stroke="#FFB74D" stroke-width="2" stroke-linecap="round" />
+                  <line x1="4" y1="38" x2="44" y2="38" stroke="#FFE0B2" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              </div>
+              <span class="time-label">Morning</span>
+              <span class="time-range">6 AM – 10 AM</span>
+            </button>
+            <button class="time-card" data-time="afternoon" data-ambient="afternoon">
+              <div class="time-icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="11" fill="#FFC107" />
+                  <line x1="24" y1="8" x2="24" y2="4" stroke="#FFD54F" stroke-width="2" stroke-linecap="round" />
+                  <line x1="24" y1="44" x2="24" y2="40" stroke="#FFD54F" stroke-width="2" stroke-linecap="round" />
+                  <line x1="8" y1="24" x2="4" y2="24" stroke="#FFD54F" stroke-width="2" stroke-linecap="round" />
+                  <line x1="44" y1="24" x2="40" y2="24" stroke="#FFD54F" stroke-width="2" stroke-linecap="round" />
+                  <line x1="12" y1="12" x2="9" y2="9" stroke="#FFD54F" stroke-width="2" stroke-linecap="round" />
+                  <line x1="39" y1="9" x2="36" y2="12" stroke="#FFD54F" stroke-width="2" stroke-linecap="round" />
+                  <line x1="12" y1="36" x2="9" y2="39" stroke="#FFD54F" stroke-width="2" stroke-linecap="round" />
+                  <line x1="39" y1="39" x2="36" y2="36" stroke="#FFD54F" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+              <span class="time-label">Afternoon</span>
+              <span class="time-range">11 AM – 3 PM</span>
+            </button>
+            <button class="time-card" data-time="evening" data-ambient="evening">
+              <div class="time-icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="30" r="10" fill="#FF7043" opacity=".7" />
+                  <path d="M4 38 Q24 28 44 38" stroke="#FF8A65" stroke-width="1.5" fill="none" />
+                  <line x1="24" y1="16" x2="24" y2="13" stroke="#FF8A65" stroke-width="2" stroke-linecap="round" />
+                  <line x1="15" y1="22" x2="12" y2="19" stroke="#FF8A65" stroke-width="2" stroke-linecap="round" />
+                  <line x1="33" y1="22" x2="36" y2="19" stroke="#FF8A65" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+              <span class="time-label">Evening</span>
+              <span class="time-range">4 PM – 7 PM</span>
+            </button>
+            <button class="time-card" data-time="night" data-ambient="night">
+              <div class="time-icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path d="M28 8 C18 10 12 19 14 29 C16 39 26 44 36 42 C28 42 22 34 22 26 C22 18 26 12 28 8Z"
+                    fill="#B0BEC5" />
+                  <circle cx="36" cy="12" r="1" fill="#FFF9C4" />
+                  <circle cx="40" cy="18" r=".7" fill="#FFF9C4" />
+                  <circle cx="32" cy="6" r=".5" fill="#FFF9C4" />
+                  <circle cx="42" cy="10" r=".8" fill="#FFF9C4" />
+                </svg>
+              </div>
+              <span class="time-label">Night</span>
+              <span class="time-range">8 PM – 12 AM</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review Button -->
+        <button class="booking-review-btn" id="reviewBookingBtn">
+          Review Booking
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ REVIEW OVERLAY (zoomed-out card with summary) ═══ -->
+  <div class="review-screen" id="reviewScreen">
+    <button class="auth-back" id="reviewBack">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+      Back
+    </button>
+
+    <div class="review-card-wrap">
+      <div class="review-card" id="reviewCard">
+        <div class="review-card-img" id="reviewCardImg">
+          <img src="" alt="">
+          <div class="review-card-overlay"></div>
+          <h3 class="review-card-title" id="reviewCardTitle">Photoshoot</h3>
+        </div>
+        <div class="review-card-body">
+          <div class="review-row"><span class="review-label">Event</span><span class="review-value"
+              id="rvEvent">—</span></div>
+          <div class="review-row"><span class="review-label">Date(s)</span><span class="review-value"
+              id="rvDates">—</span></div>
+          <div class="review-row"><span class="review-label">Location</span><span class="review-value"
+              id="rvLocation">—</span></div>
+          <div class="review-row"><span class="review-label">Duration</span><span class="review-value"
+              id="rvDuration">—</span></div>
+          <div class="review-row"><span class="review-label">Members</span><span class="review-value"
+              id="rvMembers">—</span></div>
+          <div class="review-row"><span class="review-label">Time Slot</span><span class="review-value"
+              id="rvTime">—</span></div>
+          <div class="review-row review-row--total"><span class="review-label">Total</span><span
+              class="review-value review-value--price" id="rvTotal">₹4,999</span></div>
+          <button class="review-confirm-btn" id="confirmBookBtn">
+            Book Now ✓
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>
