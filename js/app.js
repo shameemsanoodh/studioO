@@ -71,7 +71,7 @@
     { name: 'Video Shoot', price: 9999, unit: '/project', badge: 'Trending', img: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=85' },
     { name: 'Product Shoot', price: 6999, unit: '/product', badge: 'Premium', img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=85' },
     { name: 'Podcast Studio', price: 2499, unit: '/hour', badge: 'New', img: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&q=85' },
-    { name: 'Monthly Package', price: 24999, unit: '/month', badge: 'Best Value', img: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&q=85' },
+    { name: 'Monthly Package', price: 24999, unit: '/month', badge: 'Best Value', img: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&q=85' },
   ];
 
   let currentBooking = {
@@ -106,13 +106,16 @@
     else { oRing.classList.remove('active'); titleO.classList.remove('near'); }
   }
 
+  // Spotlight radius — can be overridden by the demo fade-out
+  let currentSpotlightRadius = SPOTLIGHT_RADIUS;
+
   function animateLanding() {
     if (!landingActive) return;
     requestAnimationFrame(animateLanding);
     targetX += (mouseX - targetX) * 0.12;
     targetY += (mouseY - targetY) * 0.12;
-    if (isMouseOnPage) {
-      mask.style.background = `radial-gradient(circle ${SPOTLIGHT_RADIUS}px at ${targetX}px ${targetY}px, transparent 0%, transparent 60%, rgba(0,0,0,0.92) 100%)`;
+    if (isMouseOnPage && currentSpotlightRadius > 0) {
+      mask.style.background = `radial-gradient(circle ${currentSpotlightRadius}px at ${targetX}px ${targetY}px, transparent 0%, transparent 60%, rgba(0,0,0,0.92) 100%)`;
     } else {
       mask.style.background = 'rgba(0,0,0,1)';
     }
@@ -121,6 +124,114 @@
 
   mask.style.background = 'rgba(0,0,0,1)';
   requestAnimationFrame(animateLanding);
+
+  // ── Auto-demo: cursor wanders for 4s, stops at O, fades out over 1s ──
+  (function autoDemoSpotlight() {
+    const MOVE_DURATION = 4000;  // 4s of cursor movement
+    const FADE_DURATION = 1000;  // 1s fade-out after stopping at O
+    const startTime = performance.now();
+    let userTookOver = false;
+    let phase = 'move'; // 'move' → 'fade' → 'done'
+    let fadeStartTime = 0;
+
+    // Stop demo if real user interacts
+    const cancelDemo = () => {
+      userTookOver = true;
+      currentSpotlightRadius = SPOTLIGHT_RADIUS; // restore full radius
+    };
+    document.addEventListener('mousemove', cancelDemo, { once: true });
+    document.addEventListener('touchstart', cancelDemo, { once: true });
+
+    // Waypoints: wander the page, end exactly at the O
+    // Last waypoint uses a special "o" flag — resolved to the O element's center at runtime
+    const waypoints = [
+      { x: 0.12, y: 0.18 },  // top-left
+      { x: 0.75, y: 0.15 },  // top-right
+      { x: 0.50, y: 0.50 },  // center area
+      { x: 0.15, y: 0.80 },  // bottom-left
+      { x: 0.85, y: 0.75 },  // bottom-right
+      { o: true },            // final: land on the O element
+    ];
+
+    function resolveWaypoint(wp) {
+      if (wp.o && titleO) {
+        const rect = titleO.getBoundingClientRect();
+        return {
+          x: (rect.left + rect.width / 2) / window.innerWidth,
+          y: (rect.top + rect.height / 2) / window.innerHeight,
+        };
+      }
+      return wp;
+    }
+
+    function getPosition(t) {
+      const segments = waypoints.length - 1;
+      const raw = t * segments;
+      const idx = Math.min(Math.floor(raw), segments - 1);
+      let segT = raw - idx;
+      segT = segT * segT * (3 - 2 * segT); // smoothstep
+
+      const from = resolveWaypoint(waypoints[idx]);
+      const to = resolveWaypoint(waypoints[idx + 1]);
+      return {
+        x: from.x + (to.x - from.x) * segT,
+        y: from.y + (to.y - from.y) * segT,
+      };
+    }
+
+    function demoTick(now) {
+      if (userTookOver || !landingActive) return;
+
+      if (phase === 'move') {
+        const t = Math.min((now - startTime) / MOVE_DURATION, 1);
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const pos = getPosition(t);
+
+        mouseX = vw * pos.x;
+        mouseY = vh * pos.y;
+        isMouseOnPage = true;
+        currentSpotlightRadius = SPOTLIGHT_RADIUS;
+
+        if (t >= 1) {
+          // Movement done — cursor is now on the O. Start fade-out.
+          phase = 'fade';
+          fadeStartTime = now;
+        }
+        requestAnimationFrame(demoTick);
+
+      } else if (phase === 'fade') {
+        const ft = Math.min((now - fadeStartTime) / FADE_DURATION, 1);
+        // Ease-out: slow start, accelerate at end
+        const easedFt = ft * ft;
+        currentSpotlightRadius = SPOTLIGHT_RADIUS * (1 - easedFt);
+
+        // Keep cursor parked on the O
+        if (titleO) {
+          const rect = titleO.getBoundingClientRect();
+          mouseX = rect.left + rect.width / 2;
+          mouseY = rect.top + rect.height / 2;
+        }
+        isMouseOnPage = true;
+
+        if (ft >= 1) {
+          // Fade complete — hand back to real mouse
+          phase = 'done';
+          isMouseOnPage = false;
+          mouseX = -9999;
+          mouseY = -9999;
+          currentSpotlightRadius = SPOTLIGHT_RADIUS; // restore for real mouse
+        } else {
+          requestAnimationFrame(demoTick);
+        }
+      }
+    }
+
+    // Start after a tiny delay so the page renders first
+    setTimeout(() => {
+      if (!userTookOver) requestAnimationFrame(demoTick);
+    }, 300);
+  })();
 
   // Magnetic buttons
   document.querySelectorAll('.btn').forEach(btn => {
